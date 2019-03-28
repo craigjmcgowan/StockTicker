@@ -3,34 +3,49 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Skeleton application demoing Heroku and Flask integration.">
-    <meta name="author" content="@gotoariel">
-    <!-- <link rel="icon" href="favicon.ico"> -->
+    <meta name="description" content="Simple Stock Price Plots">
+    <meta name="author" content="mcgowan.cj@gmail.com">
 
-    <title>Wilkommen, bienvenue, and welcome to Heroku!</title>
+    <title>Stock Price Plots</title>
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename = "styles.css")}}">
   </head>
   <body>
-    <div class="container">
+
+    <div class="topnav">
+      <a href="/">Home</a>
+      <a target='_blank' href = 'https://www.thedataincubator.com/'>TDI</a>
+    </div>
+
+    <div class="content">
       <div class="row">
         <div class="col-lg-12 text-left">
-          <h2>Hello, World!</h2>
-          <ul>
-            <li><a href="/about">About</a></li>
-            <li><a target="_blank" href="https://www.heroku.com/">Heroku</a></li>
-            <li><a target="_blank" href="http://flask.pocoo.org/">Flask</a></li>
-            <li><a target="_blank" href="http://jinja.pocoo.org/docs/2.9/">Jinja2</a></li>
-            <li><a target="_blank" href="http://getbootstrap.com/">Bootstrap</a></li>
-          </ul>
+          <h2>Stock Price Trends</h2>
+
+          <h4>
+            Please provide a stock ticker symbol and select the prices desired
+          </h4>
+
+          <form id='stock_info' method='post' action='' >
+            <p>
+              Ticker Symbol: <input type='text' name='ticker' required/>
+            </p>
+            <p>
+              <input type='checkbox' name='prices' value='1. open'> Open </br>
+              <input type='checkbox' name='prices' value='2. high'> High </br>
+              <input type='checkbox' name='prices' value='3. low'> Low </br>
+              <input type='checkbox' name='prices' value='4. close'> Close </br>
+            </p>
+            <p>
+              Start date: <input type='date' name='start_date' required> </br>
+              End date: <input type='date' name='end_date' required>
+            </p>
+            <p>
+              <input type='submit'>
+            </p>
+          </form>
         </div>
       </div>
     </div>
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </body>
 </html>
