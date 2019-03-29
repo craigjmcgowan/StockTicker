@@ -15,11 +15,15 @@ price_disp_map = {'1. open': 'Open', '2. high': 'High',
                   '3. low' : 'Low', '4. close': 'Close'}
 prices_display = [price_disp_map[x] for x in prices]
 
+# Read in key
+f = open('documents/tdi-stock-ticker/key/alphavantage_key.txt')
+key = f.read()
+
 # Parameters for API request
 stock_params = {'function':'TIME_SERIES_DAILY',
                 'symbol': ticker,
                 'outputsize': 'full',
-                'apikey': '8OPCHZ59XUH0UPLF'}
+                'apikey': key}
 
 # Get data from Quandl API
 r = requests.get("https://www.alphavantage.co/query?",

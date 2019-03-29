@@ -12,6 +12,9 @@ app = Flask(__name__)
 
 app.vars= {}
 
+f = open('key/alphavantage_key.txt')
+key = f.read()
+
 # Dict to map API price labels with prettier ones for display
 price_disp_map = {'1. open': 'Open', '2. high': 'High',
                   '3. low' : 'Low', '4. close': 'Close'}
@@ -53,7 +56,7 @@ def about():
         stock_params = {'function':'TIME_SERIES_DAILY',
                         'symbol': app.vars['ticker'],
                         'outputsize': 'full',
-                        'apikey': '8OPCHZ59XUH0UPLF'}
+                        'apikey': key}
         
         # Get data from Quandl API
         r = requests.get("https://www.alphavantage.co/query?",
